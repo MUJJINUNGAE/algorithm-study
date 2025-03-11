@@ -3,6 +3,7 @@ import sys
 input = sys.stdin.readline
 M = int(input().strip())
 S = set()
+fullset = set(range(1, 21))
 
 for _ in range(M):
     command = input().strip()
@@ -31,7 +32,7 @@ for _ in range(M):
             
             
     elif x == 'all':
-        S = set(i for i in range(1, 21))
+        S = fullset.copy()
         
     elif x == 'empty':
         S.clear()
