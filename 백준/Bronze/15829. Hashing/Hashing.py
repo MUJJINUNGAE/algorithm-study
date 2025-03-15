@@ -15,4 +15,4 @@ result = 0
 for i in range(len(a)):
     result += match_alpabet[a[i]] * (r**i)
     
-print(result)
+print(result%M)
