@@ -1,5 +1,4 @@
 T = int(input())
-floor = []
 
 for i in range(T):
     floor = []
