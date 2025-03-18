@@ -1,5 +1,4 @@
 T = int(input())
-
 PS = [input() for _ in range(T)]
 
 for s in PS: 
