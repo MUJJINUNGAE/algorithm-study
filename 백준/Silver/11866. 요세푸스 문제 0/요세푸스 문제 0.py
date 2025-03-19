@@ -1,10 +1,16 @@
+from collections import deque
+
 N, K = map(int, input().split())
-pm = [i for i in range(1, N+1)]
+pm = deque([i for i in range(1, N+1)])
 josephus = []
-idx = 0
+cnt = 0
 
 while pm:
-    idx = (idx + K - 1) % len(pm)
-    josephus.append(pm.pop(idx))
+    if cnt != K-1:
+        pm.rotate(-1)
+        cnt += 1
+    else:
+        josephus.append(pm.popleft())
+        cnt = 0
 
 print(f'<{", ".join(map(str, josephus))}>')
