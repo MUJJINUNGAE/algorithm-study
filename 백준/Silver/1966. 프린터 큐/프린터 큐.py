@@ -8,6 +8,7 @@ T = int(input())
 for _ in range(T):
     N, M = map(int, input().split())
     important = list(map(int, input().split()))
+    sorted_important = deque(sorted(important, reverse=True))
     doc = deque([[i, important[i]] for i in range(N)])
     n = 1
     
@@ -17,10 +18,11 @@ for _ in range(T):
             break
             
         else:
-            if doc[0][1] < max([x[1] for x in doc]):
+            if doc[0][1] < sorted_important[0]:
                 doc.rotate(-1)
                 
             else:
+                sorted_important.popleft()
                 prt = doc.popleft()
                 if prt[0] == M:
                     print(n)
