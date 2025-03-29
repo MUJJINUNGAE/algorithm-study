@@ -14,11 +14,8 @@ for i in seq:
         stack.pop()
         result.append('-')
     else:
-        result.append('NO')
+        result = ['NO']
         break
-        
-if 'NO' in result:
-  print('NO')
-else:
-  for i in result:
-      print(i)
+
+for i in result:
+    print(i)  
