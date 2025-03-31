@@ -7,6 +7,7 @@ N = int(input())
 num = sorted([int(input()) for _ in range(N)])
 s = sum(num)
 l = len(num)
+
 counter = Counter(num)
 m = max(counter.values())
 mode = []
