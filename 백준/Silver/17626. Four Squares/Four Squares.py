@@ -1,22 +1,13 @@
 import math
 
 n = int(input())
+dp = [0, 1] + [0] * (n-1)
 
-def four_square(n):
-    square = int(math.sqrt(n))
+for i in range(2, n + 1):
+    min_val = 1e9
+    for j in range(1, int(math.sqrt(i)) + 1):
+        min_val = min(min_val, dp[i - j**2])
+        
+    dp[i] = min_val + 1
     
-    if square == math.sqrt(n):
-        return 1
-    
-    for i in range(1, square + 1):
-        if int(math.sqrt(n - i**2)) == math.sqrt(n - i**2):
-            return 2
-            
-    for i in range(1, square + 1):
-        for j in range(1, int(math.sqrt(n - i**2)) + 1):
-            if int(math.sqrt(n - i**2 - j**2)) == math.sqrt(n - i**2 - j**2):
-                return 3
-                
-    return 4
-    
-print(four_square(n))
+print(dp[n])
