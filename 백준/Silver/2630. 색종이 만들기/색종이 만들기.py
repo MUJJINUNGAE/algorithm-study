@@ -1,5 +1,4 @@
 import sys
-
 input = sys.stdin.readline
 
 
@@ -10,41 +9,27 @@ def check(p):
         for j in range(len(p)):
             if p[i][j] != first_value:
                 return False
-    if first_value == 1:
-        return '1'
-    else:
-        return '0'
+    return str(first_value)
     
     
 def cut(paper):
-    n = len(paper) // 2
     chk = check(paper)
-    
     if chk:
         return chk
-    
-    else:
-        paper1 = [x[:n] for x in paper[:n]]
-        paper2 = [x[n:] for x in paper[:n]]
-        paper3 = [x[:n] for x in paper[n:]]
-        paper4 = [x[n:] for x in paper[n:]]
         
-        return cut(paper1) + cut(paper2) + cut(paper3) + cut(paper4)
+    n = len(paper) // 2
+
+    return (
+        cut([x[:n] for x in paper[:n]]) +
+        cut([x[n:] for x in paper[:n]]) +
+        cut([x[:n] for x in paper[n:]]) +
+        cut([x[n:] for x in paper[n:]])
+        )
         
         
 size = int(input())
-paper = []
-
-for _ in range(size):
-    paper.append(list(map(int, input().split())))
-
-    
+paper = [list(map(int, input().split())) for _ in range(size)]
 cut_paper = cut(paper)
-cnt_one = 0
 
-for i in cut_paper:
-    if i == '1':
-        cnt_one += 1
-        
-print(len(cut_paper) - cnt_one)
-print(cnt_one)
+print(cut_paper.count('0'))
+print(cut_paper.count('1'))
